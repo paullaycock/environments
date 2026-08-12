@@ -9,17 +9,17 @@ def configure_inveniordm_extension(config: dict):
             "zenodo_production": {
                 "label": "Zenodo",
                 "base_url": "https://zenodo.org",
-                "oauth_client_id": os.getenv("ZENODO_OAUTH_CLIENT_ID", "HaWBPRb7lsif7cqTypUNeFni9PJOoTm5IcjTJrtt"),
+                "oauth_client_id": os.getenv("ZENODO_OAUTH_CLIENT_ID") or "HaWBPRb7lsif7cqTypUNeFni9PJOoTm5IcjTJrtt",
             },
             "cds_repository": {
                 "label": "CDS",
                 "base_url": "https://repository.cern",
-                "oauth_client_id": os.getenv("CDS_OAUTH_CLIENT_ID", "q4szrkotZqAuRA6HhGeajJsqTqEd6t6lTHHGLWD4"),
+                "oauth_client_id": os.getenv("CDS_OAUTH_CLIENT_ID") or "q4szrkotZqAuRA6HhGeajJsqTqEd6t6lTHHGLWD4",
             },
             "zenodo_sandbox": {
                 "label": "Zenodo Sandbox",
                 "base_url": "https://sandbox.zenodo.org",
-                "oauth_client_id": os.getenv("ZENODO_SANDBOX_OAUTH_CLIENT_ID", "ca8NzRHmqp6tVA0IE9XUlmbL74cGm9RqguC9DZlU"),
+                "oauth_client_id": os.getenv("ZENODO_SANDBOX_OAUTH_CLIENT_ID") or "ca8NzRHmqp6tVA0IE9XUlmbL74cGm9RqguC9DZlU",
             },
         }
     }
