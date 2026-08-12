@@ -40,7 +40,7 @@ RUN python -m pip install reana-jupyterlab==1.0.1 \
 
 RUN git clone https://github.com/vre-hub/inveniordm-jupyterlab-extension.git \
     && cd inveniordm-jupyterlab-extension \
-    && git checkout --detach e421fdb893b4eaa5ff197d0fed88dca06df77d94 \
+    && git checkout --detach fc21415b9ee1abae327ffdcf9258455f913fe8b8 \
     && python -m pip install . \
     && cd .. \
     && rm -rf inveniordm-jupyterlab-extension

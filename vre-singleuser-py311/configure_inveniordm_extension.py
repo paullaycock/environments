@@ -5,13 +5,14 @@ def configure_inveniordm_extension(config: dict):
     Update the jupyter server configuration with settings for the InvenioRDM extension.
     """
     config["InvenioRDMJupyterLab"] = {
+        "default_remote_server": "zenodo",
         "remote_servers": {
-            "zenodo_production": {
+            "zenodo": {
                 "label": "Zenodo",
                 "base_url": "https://zenodo.org",
                 "oauth_client_id": os.getenv("ZENODO_OAUTH_CLIENT_ID") or "HaWBPRb7lsif7cqTypUNeFni9PJOoTm5IcjTJrtt",
             },
-            "cds_repository": {
+            "cds": {
                 "label": "CDS",
                 "base_url": "https://repository.cern",
                 "oauth_client_id": os.getenv("CDS_OAUTH_CLIENT_ID") or "q4szrkotZqAuRA6HhGeajJsqTqEd6t6lTHHGLWD4",
