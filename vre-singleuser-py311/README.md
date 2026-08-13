@@ -7,7 +7,7 @@ This image based on the original [ESCAPE Data Lake-as-a-Service Singleuser Base 
   * [rucio-jupyterlab](https://pypi.org/project/rucio-jupyterlab) v1.0.0.
     * The configuration for the Rucio JupyterLab extension is preset to connect with the ESCAPE Data Lake.
   * [reana-jupyterlab](https://github.com/vre-hub/reana-jupyterlab-extension) v1.0.0.
-  * [zenodo-jupyterlab](https://github.com/vre-hub/zenodo-jupyterlab-extension).
+  * [inveniordm-jupyterlab](https://github.com/vre-hub/inveniordm-jupyterlab-extension).
   * [swanoauthrenew](https://pypi.org/project/swanoauthrenew/) v1.0.1 to enable renewal of tokens.
 3. The image is compatible with [rucio-clients](https://pypi.org/project/rucio-clients)  `release-34.6.0` - please report any possible bug or error found.
 4. ESCAPE `ca-certificates` and [VOMSes](https://indigo-iam.github.io/escape-docs/) files are preinstalled.

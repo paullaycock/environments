@@ -38,12 +38,12 @@ RUN python -m pip install swanoauthrenew==1.0.1 \
 RUN python -m pip install reana-jupyterlab==1.0.1 \
     && jupyter server extension enable --py reana_jupyterlab --sys-prefix
 
-RUN git clone https://github.com/vre-hub/zenodo-jupyterlab-extension.git \
-    && cd zenodo-jupyterlab-extension \
+RUN git clone https://github.com/vre-hub/inveniordm-jupyterlab-extension.git \
+    && cd inveniordm-jupyterlab-extension \
+    && git checkout --detach fc21415b9ee1abae327ffdcf9258455f913fe8b8 \
     && python -m pip install . \
-    && jupyter server extension enable --py zenodo_jupyterlab.server --sys-prefix \
     && cd .. \
-    && rm -rf zenodo-jupyterlab-extension
+    && rm -rf inveniordm-jupyterlab-extension
     
 # Custom version of reana-client due to the jsonschema problem
 # RUN python -m pip install git+https://github.com/mdonadoni/reana-client.git@vre-summer-24
@@ -95,8 +95,9 @@ RUN mkdir /certs \
     && rm /tmp/*.crt \
     && update-ca-certificates
 
-# Setup extension Rucio instance config
+# Setup jupyter server config for extensions
 COPY configure-vre.py /usr/local/bin/
+COPY configure_inveniordm_extension.py /usr/local/bin/
 RUN chmod +x /usr/local/bin/configure-vre.py
 COPY configure-vre.sh /usr/local/bin/before-notebook.d/
 

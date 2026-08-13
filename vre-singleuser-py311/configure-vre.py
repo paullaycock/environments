@@ -3,6 +3,7 @@
 
 import os
 import json
+from configure_inveniordm_extension import configure_inveniordm_extension
 
 HOME = '/home/jovyan'
 
@@ -134,6 +135,8 @@ def write_jupyterlab_config():
         'default_auth_type': os.getenv('RUCIO_DEFAULT_AUTH_TYPE', 'x509_proxy'),
         'log_level': os.getenv('RUCIO_LOG_LEVEL', 'debug'),
     }
+
+    configure_inveniordm_extension(config_json)
 
     with open(file_path, 'w') as config_file:
         config_file.write(json.dumps(config_json, indent=2))
