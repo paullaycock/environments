@@ -35,7 +35,7 @@ RUN python -m pip install rucio-clients==39.2.0 \
 RUN python -m pip install swanoauthrenew==1.0.1 \ 
     && jupyter server extension enable --py swanoauthrenew --sys-prefix 
 
-RUN python -m pip install reana-jupyterlab==1.0.1 \
+RUN python -m pip install reana-jupyterlab==1.0.2 \
     && jupyter server extension enable --py reana_jupyterlab --sys-prefix
 
 RUN git clone https://github.com/vre-hub/inveniordm-jupyterlab-extension.git \
