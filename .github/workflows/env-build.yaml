@@ -2,9 +2,9 @@ name: Docker automatic build and publish
 
 on:
   push:
-    branches: 
+    branches:
       - main
-pull_request:
+  pull_request:
     branches:
       - main
 
