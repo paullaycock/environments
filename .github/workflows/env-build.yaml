@@ -122,7 +122,7 @@ jobs:
         with:
           context: ./${{ matrix.environments }}
           file: ./${{ matrix.environments }}/Dockerfile
-          push: true
+          push: ${{ github.event_name == 'push' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: ${{ steps.platforms.outputs.platforms }}
