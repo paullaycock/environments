@@ -13,6 +13,11 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends --only-upgrade ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
+# Replace the base image's Rucio extension config script with the
+# env-driven ET version (see the header of configure-rucio.py).
+COPY configure-rucio.py /usr/local/bin/configure-vre.py
+RUN chmod 755 /usr/local/bin/configure-vre.py
+
 # conda and pip run as the notebook user, who owns /opt/conda, as in the base image.
 USER $NB_UID
 RUN mamba install -y -n base -c conda-forge "certifi>=2026.10.19" "conda>=26.9.4" \
