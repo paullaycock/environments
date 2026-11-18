@@ -68,7 +68,9 @@ def write_jupyterlab_config():
 
 def write_ipython_config():
     file_path = HOME + '/.ipython/profile_default/ipython_kernel_config.json'
-    extension_module = 'rucio_jupyterlab.kernels.ipython'
+    # Shipped by the ET Dockerfile on PYTHONPATH, so non-base kernels load it too.
+    extension_module = 'rucio_jupyterlab_kernel'
+    old_module = 'rucio_jupyterlab.kernels.ipython'
 
     if not os.path.isfile(file_path):
         os.makedirs(HOME + '/.ipython/profile_default/', exist_ok=True)
@@ -90,6 +92,8 @@ def write_ipython_config():
     if 'extensions' not in ipkernel_app:
         ipkernel_app['extensions'] = []
 
+    if old_module in ipkernel_app['extensions']:
+        ipkernel_app['extensions'].remove(old_module)
     if extension_module not in ipkernel_app['extensions']:
         ipkernel_app['extensions'].append(extension_module)
 
