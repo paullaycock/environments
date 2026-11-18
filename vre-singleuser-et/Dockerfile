@@ -18,6 +18,14 @@ RUN apt-get update \
 COPY configure-rucio.py /usr/local/bin/configure-vre.py
 RUN chmod 755 /usr/local/bin/configure-vre.py
 
+# The extension's kernel module, importable from every kernel (conda envs
+# included). Copied under its own name so it cannot shadow the server's
+# rucio_jupyterlab package; configure-rucio.py registers it with IPython.
+RUN d=$(python -c "import os, rucio_jupyterlab.kernels.ipython as m; print(os.path.dirname(m.__file__))") \
+    && mkdir -p /opt/rucio-kernel-ext/rucio_jupyterlab_kernel \
+    && cp "$d"/__init__.py "$d"/types.py /opt/rucio-kernel-ext/rucio_jupyterlab_kernel/
+ENV PYTHONPATH=/opt/rucio-kernel-ext${PYTHONPATH:+:$PYTHONPATH}
+
 # conda and pip run as the notebook user, who owns /opt/conda, as in the base image.
 USER $NB_UID
 RUN mamba install -y -n base -c conda-forge "certifi>=2026.10.19" "conda>=26.9.4" \
